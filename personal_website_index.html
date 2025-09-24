@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Krystal (Wei) Luo — Portfolio</title>
+  <meta name="description" content="Personal website and portfolio of Krystal (Wei) Luo — biomedical engineering, medical imaging, neurotech, and soft robotics." />
+  <meta property="og:title" content="Krystal (Wei) Luo — Portfolio" />
+  <meta property="og:description" content="Biomedical engineering • Medical imaging • Neurotech • Soft robotics" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#c9e6ff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    /* ————— CSS RESET (tiny) ————— */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+
+    /* ————— THEME ————— */
+    :root{
+      --bg: #f8fafc;
+      --bg-soft: #ffffff;
+      --text: #0b1220;
+      --muted: #5b6473;
+      --brand: #3b82f6; /* blue-500 */
+      --brand-2: #8b5cf6; /* violet-500 */
+      --ring: rgba(59,130,246,.35);
+      --card: rgba(255,255,255,.7);
+      --shadow: 0 10px 40px rgba(15,23,42,.10);
+      --radius: 18px;
+      --grad: radial-gradient(1200px 600px at 10% -10%, rgba(59,130,246,.12), transparent 60%),
+              radial-gradient(1000px 500px at 110% 10%, rgba(139,92,246,.12), transparent 60%);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b1220;
+        --bg-soft: #0f172a;
+        --text: #f1f5f9;
+        --muted: #9aa4b2;
+        --brand: #60a5fa;
+        --brand-2: #a78bfa;
+        --ring: rgba(96,165,250,.35);
+        --card: rgba(15,23,42,.6);
+        --shadow: 0 10px 40px rgba(0,0,0,.35);
+      }
+    }
+
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      background-image: var(--grad);
+      line-height: 1.6;
+    }
+
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    .glass{backdrop-filter: blur(10px); background: var(--card); box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius)}
+
+    /* ———— Header ———— */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(8px);}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 18px}
+    .nav .brand{display:flex; gap:.6rem; align-items:center; font-weight:700}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 6px var(--ring)}
+    .nav a{opacity:.9; text-decoration:none}
+    .nav ul{list-style:none; display:flex; gap:18px; padding:0; margin:0}
+    .nav .btn{padding:8px 14px; border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; font-weight:600}
+    .nav .ghost{padding:8px 14px; border-radius:999px; border:1px solid rgba(124,139,161,.35)}
+    .menu{display:none}
+    @media (max-width:840px){
+      .nav ul{display:none}
+      .menu{display:block}
+    }
+
+    /* ———— Hero ———— */
+    .hero{padding:80px 0 40px}
+    .hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:30px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:.5rem; font-size:.9rem; padding:8px 12px; border-radius:999px; border:1px solid rgba(124,139,161,.35)}
+    h1{font-size:clamp(36px, 5.5vw, 64px); line-height:1.1; margin:10px 0 10px}
+    .tag{font-size:1.05rem; color:var(--muted); max-width:65ch}
+    .cta{display:flex; gap:12px; margin-top:18px}
+    .cta .primary{padding:12px 18px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; font-weight:700; border:none}
+    .cta .secondary{padding:12px 18px; border-radius:12px; border:1px solid rgba(124,139,161,.35); background:transparent; font-weight:700}
+    .hero-card{padding:22px;}
+    .kpi{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px}
+    .kpi .tile{padding:16px; border-radius:14px; border:1px solid rgba(124,139,161,.25)}
+    .kpi .num{font-size:1.6rem; font-weight:800}
+    @media (max-width:840px){
+      .hero-inner{grid-template-columns: 1fr}
+    }
+
+    /* ———— Section ———— */
+    section{padding:64px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px}
+    .eyebrow{letter-spacing:.1em; text-transform:uppercase; font-size:.8rem; color:var(--muted)}
+    .title{font-size:clamp(22px,3vw,30px); margin:.25rem 0}
+    .sub{color:var(--muted)}
+
+    /* ———— Cards ———— */
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:16px}
+    .col-4{grid-column: span 4}
+    .col-6{grid-column: span 6}
+    .col-12{grid-column: span 12}
+    @media (max-width:900px){.col-4,.col-6{grid-column: span 12}}
+
+    .card{position:relative; padding:18px; border-radius:16px; border:1px solid rgba(124,139,161,.25); transition: transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform: translateY(-3px); box-shadow: var(--shadow)}
+    .chip{display:inline-flex; padding:4px 10px; border-radius:999px; border:1px solid rgba(124,139,161,.25); font-size:.8rem; gap:.4rem; align-items:center}
+
+    /* ———— Project filter ———— */
+    .filters{display:flex; gap:8px; flex-wrap:wrap}
+    .filters button{padding:8px 12px; border-radius:999px; border:1px solid rgba(124,139,161,.35); background:transparent; cursor:pointer}
+    .filters button.active{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; border-color:transparent}
+
+    /* ———— Footer ———— */
+    footer{padding:40px 0 60px; color:var(--muted)}
+
+    /* ———— Reveal Animations ———— */
+    .reveal{opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1; transform:none}
+
+    /* ———— Utility ———— */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="glass">
+    <nav class="container nav">
+      <a href="#home" class="brand"><span class="dot" aria-hidden="true"></span> <span>Krystal (Wei) Luo</span></a>
+      <button id="menuBtn" class="menu ghost" aria-label="Toggle menu">☰</button>
+      <ul id="navLinks" aria-label="Primary">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="btn" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero container">
+    <div class="hero-inner">
+      <div>
+        <span class="badge glass"><span class="dot" aria-hidden="true"></span> Biomedical Engineering · Neurotech · Imaging</span>
+        <h1 class="reveal">Hi, I’m Krystal — I build at the edge of biology, computation, and design.</h1>
+        <p class="tag reveal">MS‑Research @ Carnegie Mellon. I design medical devices (OverWatch), reconstruct images (ms‑CBCT), and decode neural signals (SpikeFormer, organoid MEAs). I care about rigorous science and delightful UX.</p>
+        <div class="cta reveal" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <a class="primary" href="#projects">Explore Work</a>
+          <a class="secondary" href="./Krystal_Luo_CV.pdf" download>Download CV</a>
+          <button id="themeBtn" class="secondary" aria-pressed="false" title="Toggle theme">Toggle theme</button>
+        </div>
+        <div class="kpi reveal">
+          <div class="tile glass"><div class="num">10+ </div><div>Projects shipped</div></div>
+          <div class="tile glass"><div class="num">6 </div><div>Domains spanned</div></div>
+          <div class="tile glass"><div class="num">∞ </div><div>Curiosity</div></div>
+        </div>
+      </div>
+      <div class="hero-card glass reveal">
+        <h3 class="title" style="margin-top:0">Now</h3>
+        <ul style="margin:0; padding-left:18px">
+          <li>Designing OverWatch opioid‑overdose detection & response system</li>
+          <li>ms‑CBCT iterative reconstruction with TV regularization</li>
+          <li>Spike sorting & neural decoding on Neuropixels + organoid MEAs</li>
+        </ul>
+        <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap">
+          <span class="chip">Python</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">MATLAB</span>
+          <span class="chip">SwiftUI</span>
+          <span class="chip">Embedded</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2 class="title">Projects</h2>
+      </div>
+      <div class="filters" role="tablist" aria-label="Project filters">
+        <button class="active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button data-filter="imaging" role="tab">Imaging</button>
+        <button data-filter="neuro" role="tab">Neuro</button>
+        <button data-filter="devices" role="tab">Devices</button>
+        <button data-filter="software" role="tab">Software</button>
+      </div>
+    </div>
+
+    <div id="projectGrid" class="grid" aria-live="polite"></div>
+  </section>
+
+  <!-- Research -->
+  <section id="research" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Academic</div>
+        <h2 class="title">Research Interests</h2>
+        <p class="sub">Medical imaging reconstruction and calibration; spike sorting and neural decoding; soft‑robotic bioelectronics for organoid interfaces.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="col-6 card glass reveal">
+        <h3>Image Reconstruction (CBCT & ms‑CBCT)</h3>
+        <p>Blank ratio determination, projection pre‑processing, SIRT + TV regularization, and water calibration for HU scaling; investigating multi‑source advantages for artifact reduction and torque correlation.</p>
+        <div class="chip">Python · NumPy · scikit‑image</div>
+      </article>
+      <article class="col-6 card glass reveal">
+        <h3>Neural Signal Processing & Decoding</h3>
+        <p>SpikeFormer and dynamic domain adaptation decoders for robust spike sorting and cross‑session decoding on Neuropixels and organoid MEA data; real‑time drift compensation and UI tooling.</p>
+        <div class="chip">PyTorch · CUDA · Visualization</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Writing</div>
+        <h2 class="title">Selected Publications & Talks</h2>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="col-12 card glass reveal">
+        <h3 class="title" style="margin-top:0">Undergraduate Honors Theses</h3>
+        <ul>
+          <li>BME: Soft‑robotics bioelectronics for organoid interfaces (advisor: Dr. Bai)</li>
+          <li>Physics: Multi‑source CBCT vs single‑source CBCT for dental implant torque correlation</li>
+        </ul>
+        <p class="sub">Drafts available upon request.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2 class="title">A tiny intro</h2>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-6 card glass reveal">
+        <p>Hi! I’m Krystal — a BME + Physics grad (UNC) now at CMU (MS‑Research). I love building tools that help clinicians and scientists see more clearly and act faster. Outside the lab, I play jazz & pop, and travel with a cat (Heisen) and a service dog (Fermi).</p>
+      </div>
+      <div class="col-6 card glass reveal">
+        <h3 style="margin-top:0">Highlights</h3>
+        <ul>
+          <li>OverWatch: opioid‑overdose detection & autoinjector system</li>
+          <li>Organoid MEA: spike clustering and neural decoding pipelines</li>
+          <li>ms‑CBCT: iterative recon & HU calibration for HU scaling</li>
+          <li>Mentored & TA’d across imaging and neurotech topics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Work with me</div>
+        <h2 class="title">Contact</h2>
+        <p class="sub">I’m open to collaborations in imaging, neural engineering, and medical devices.</p>
+      </div>
+    </div>
+
+    <div class="card glass reveal">
+      <p><strong>Email:</strong> <span id="email" class="chip" data-user="hello" data-domain="krystal‑luo.com">hello [at] krystal‑luo [dot] com</span></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/" rel="me">github.com/your‑handle</a> · <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/" rel="me">linkedin.com/in/your‑handle</a></p>
+    </div>
+  </section>
+
+  <footer class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Krystal (Wei) Luo</div>
+      <div style="display:flex; gap:10px; align-items:center">
+        <a class="ghost" href="#home">Back to top ↑</a>
+        <a class="ghost" href="/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ——— Theme toggle with localStorage
+    const themeBtn = document.getElementById('themeBtn');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    function setTheme(mode){
+      document.documentElement.dataset.theme = mode;
+      if(mode){ localStorage.setItem('theme', mode); }
+    }
+    const stored = localStorage.getItem('theme');
+    if(stored) setTheme(stored);
+    themeBtn?.addEventListener('click', ()=>{
+      const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      setTheme(next);
+      themeBtn.setAttribute('aria-pressed', next === 'dark');
+    });
+
+    // ——— Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', ()=>{
+      const shown = getComputedStyle(navLinks).display !== 'none';
+      navLinks.style.display = shown ? 'none' : 'flex';
+    });
+
+    // ——— IntersectionObserver reveal
+    const io = new IntersectionObserver((entries)=>{
+      for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target) } }
+    }, {threshold: 0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // ——— Render projects from data
+    const projects = [
+      { title: 'OverWatch — Overdose detection & autoinjector', tags:['devices','software'], desc:'Wearable chest patch, iOS/watchOS app, and autoinjector. Risk management, ISO 14971, BLE, SwiftUI.', link:'#', meta:'2025' },
+      { title: 'ms‑CBCT reconstruction & HU calibration', tags:['imaging','software'], desc:'Projection preprocessing, SIRT + TV, water calibration; compared to single‑source CBCT.', link:'#', meta:'2024' },
+      { title: 'SpikeFormer — robust spike sorting', tags:['neuro','software'], desc:'Multi‑scale Transformer with masked reconstruction and DDAD for cross‑session decoding.', link:'#', meta:'2025' },
+      { title: 'Organoid MEA decoding toolkit', tags:['neuro','devices'], desc:'2D/3D MEA signal acquisition, spike clustering, visualization dashboard.', link:'#', meta:'2024' },
+      { title: 'Soft‑robotic organoid gripper', tags:['devices'], desc:'MXene/AgNW sensors, PNIPAM/PAAm hydrogel actuators; bilayer e‑skin‑muscle constructs.', link:'#', meta:'2023' }
+    ];
+
+    const grid = document.getElementById('projectGrid');
+    function card(p){
+      return `<article class="col-4 card glass reveal" data-tags="${p.tags.join(' ')}">\
+        <div class="eyebrow">${p.meta}</div>\
+        <h3 class="title" style="margin:.2rem 0 0">${p.title}</h3>\
+        <p>${p.desc}</p>\
+        <div class="chip">${p.tags.join(' · ')}</div>\
+        <div style="margin-top:10px"><a class="ghost" href="${p.link}">Details →</a></div>\
+      </article>`;
+    }
+    function render(filter='all'){
+      grid.innerHTML = projects.map(card).join('');
+      if(filter !== 'all'){
+        document.querySelectorAll('#projectGrid .card').forEach(el=>{
+          const tags = el.getAttribute('data-tags').split(' ');
+          el.style.display = tags.includes(filter) ? '' : 'none';
+        });
+      }
+      // re‑observe for reveal
+      document.querySelectorAll('#projectGrid .reveal').forEach(el=>io.observe(el));
+    }
+    render();
+
+    document.querySelectorAll('.filters button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        render(btn.dataset.filter);
+      });
+    });
+
+    // ——— Email de‑obfuscation
+    const emailEl = document.getElementById('email');
+    if(emailEl){
+      const user = emailEl.dataset.user; const domain = emailEl.dataset.domain.replace('‑','-');
+      const real = `${user}@${domain}`;
+      emailEl.textContent = real;
+      emailEl.parentElement.innerHTML = `<strong>Email:</strong> <a href="mailto:${real}">${real}</a>`;
+    }
+
+    // ——— Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ——— Respect reduced motion
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('*').forEach(el=>el.style.scrollBehavior='auto');
+    } else {
+      document.documentElement.style.scrollBehavior='smooth';
+    }
+
+    // ——— JSON‑LD
+    const ld = {
+      '@context':'https://schema.org', '@type':'Person',
+      name:'Krystal (Wei) Luo',
+      url: location.origin,
+      sameAs: ['https://github.com/your-handle','https://www.linkedin.com/in/your-handle'],
+      jobTitle: 'Biomedical Engineer',
+      worksFor: { '@type':'CollegeOrUniversity', name:'Carnegie Mellon University' }
+    };
+    const s = document.createElement('script'); s.type='application/ld+json'; s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+  </script>
+</body>
+</html>
